@@ -14,13 +14,12 @@ with st.sidebar:
     )
     st.sidebar.markdown("📘 **About**")
     st.sidebar.markdown("""
-    **ETHIKA** adalah modul Ethics & Bias Checker yang dirancang untuk mendeteksi ketidakseimbangan dataset dan mengevaluasi fairness model secara sederhana dan interaktif. Modul ini tidak hanya memberikan flag dan indikator bias, tetapi juga mengedukasi mahasiswa dengan refleksi kritis tentang dampak sosial dan etis dari bias AI, menjadikan pembelajaran responsible AI lebih hidup dan kontekstual dalam ekosistem Web3.
+    **Diva** adalah asisten Web3 yang seru tapi powerful, yang otomatis menangani pemrosesan data, analitik, dan visualisasi insight, jadi kamu bisa fokus berkarya sementara dia urus semuanya. Dari unggah CSV/JSON hingga dashboard real-time, RANTAI Diva mengubah data blockchain dan operasional yang kompleks menjadi hasil yang mudah dipahami dan bisa langsung ditindaklanjuti. Tinggal goyangkan langkahmu, biarkan RANTAI Diva yang kerja! 💃✨
     
     ---
     #### 🔮 Vision Statement
     
-    Menjadi modul etika AI terpercaya yang memberdayakan mahasiswa dan pengembang untuk menciptakan model machine learning yang adil, bertanggung jawab, dan berakar pada nilai-nilai sosial, hukum, dan moral, guna membangun teknologi yang layak dan bermanfaat bagi semua lapisan masyarakat.
-
+    Memberdayakan kreator, mahasiswa, dan inovator dengan membuat analitik dan insight berbasis data dan blockchain jadi mudah diakses. RANTAI Diva membayangkan dunia di mana memahami, memvisualisasikan, dan mengambil keputusan dari data semudah dan semenyenangkan menari—menghubungkan teknologi Web3 dengan kreativitas dan aksi nyata sehari-hari.
     ---
     ### 🧩 STC Ecosystem
     
