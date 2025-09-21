@@ -20,6 +20,7 @@ with st.sidebar:
     #### 🔮 Vision Statement
     
     Memberdayakan kreator, mahasiswa, dan inovator dengan membuat analitik dan insight berbasis data dan blockchain jadi mudah diakses. RANTAI Diva membayangkan dunia di mana memahami, memvisualisasikan, dan mengambil keputusan dari data semudah dan semenyenangkan menari—menghubungkan teknologi Web3 dengan kreativitas dan aksi nyata sehari-hari.
+   
     ---
     ### 🧩 STC Ecosystem
     
