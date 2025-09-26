@@ -87,15 +87,50 @@ with st.sidebar:
 
 def embed_iframe(src, hide_top_px=100, hide_bottom_px=0, height=800):
     components.html(f"""
-    <div style="height:{height}px; overflow:hidden; position:relative;">
-        <iframe src="{src}" 
-                style="width:100%; height:calc(100% + {hide_top_px + hide_bottom_px}px); border:none; position:relative; top:-{hide_top_px}px;">
-        </iframe>
+    <style>
+        .custom-iframe {{
+            width: 100%;
+            height: calc(100% + {hide_top_px}px + {hide_bottom_px}px);
+            border: none;
+            overflow: hidden;
+            position: relative;
+            top: -{hide_top_px}px;
+        }}
+
+        /* ❌ Sembunyikan iframe jika layar <= 768px (tablet & HP) */
+        @media (max-width: 768px) {{
+            .custom-iframe {{
+                display: none !important;
+            }}
+            .mobile-warning {{
+                display: block !important;
+                font-size: 1rem;
+                text-align: center;
+                padding: 1rem;
+                background: #f8f8f8;
+                border-radius: 8px;
+                margin-top: 1rem;
+            }}
+        }}
+
+        /* ✅ Tampilkan iframe kalau desktop */
+        @media (min-width: 769px) {{
+            .mobile-warning {{
+                display: none !important;
+            }}
+        }}
+    </style>
+
+    <iframe class="custom-iframe" src="{src}"></iframe>
+    <div class="mobile-warning">
+        📱 Tampilan ini tidak tersedia di perangkat seluler.<br>
+        Silakan buka lewat laptop atau desktop untuk pengalaman penuh 💻
     </div>
-    """, height=height + hide_top_px + hide_bottom_px)
+    """, height=height+hide_top_px+hide_bottom_px)
 
 # URL Ohara
 iframe_url = "https://ohara.ai/mini-apps/4e2fb7dc-1821-43bb-afdc-be3db1d12b74"
 
 # Panggil fungsi
-embed_iframe(iframe_url, hide_top_px=110, hide_bottom_px = 80, height=800)
+embed_iframe(iframe_url, hide_top_px=110, hide_bottom_px = 20, height=800)
+
