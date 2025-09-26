@@ -89,10 +89,37 @@ import streamlit.components.v1 as components
 
 def embed_iframe(src, hide_top_px=100, hide_bottom_px=0, height=800):
     components.html(f"""
-    <div style="height:{height}px; overflow:hidden; position:relative;">
+    <style>
+        @media (max-width: 768px) {{
+            .hide-on-mobile {{
+                display: none !important;
+            }}
+            .show-on-mobile {{
+                display: block !important;
+                padding: 24px 12px;
+                background: #ffecec;
+                color: #d10000;
+                font-weight: bold;
+                text-align: center;
+                border-radius: 12px;
+                font-size: 1.2em;
+                margin-top: 24px;
+            }}
+        }}
+        @media (min-width: 769px) {{
+            .show-on-mobile {{
+                display: none !important;
+            }}
+        }}
+    </style>
+    <div class="hide-on-mobile" style="height:{height}px; overflow:hidden; position:relative;">
         <iframe src="{src}" 
                 style="width:100%; height:calc(100% + {hide_top_px + hide_bottom_px}px); border:none; position:relative; top:-{hide_top_px}px;">
         </iframe>
+    </div>
+    <div class="show-on-mobile">
+        📱 Tampilan ini tidak tersedia di perangkat seluler.<br>
+        Silakan buka lewat laptop atau desktop untuk pengalaman penuh 💻
     </div>
     """, height=height + hide_top_px + hide_bottom_px)
 
