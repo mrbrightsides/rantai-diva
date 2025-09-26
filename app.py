@@ -87,59 +87,38 @@ with st.sidebar:
 
 import streamlit.components.v1 as components
 
-def embed_iframe(src, height=800):
+def embed_iframe(src, hide_top_px=100, hide_bottom_px=0, height=800):
     components.html(f"""
     <style>
-        .iframe-wrapper {{
-            position: relative;
+        .custom-iframe {{
             width: 100%;
-            height: {height}px;
-            overflow: hidden;
-        }}
-
-        .iframe-wrapper iframe {{
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            height: calc(100% + {hide_top_px}px + {hide_bottom_px}px);
             border: none;
+            overflow: hidden;
+            position: relative;
+            top: -{hide_top_px}px;
         }}
 
-        /* ❌ Sembunyikan di HP */
+        /* Untuk tampilan mobile (max 768px) */
         @media (max-width: 768px) {{
-            .iframe-wrapper {{
-                display: none;
-            }}
-            .mobile-msg {{
-                display: block !important;
-                font-size: 1rem;
-                text-align: center;
-                padding: 1rem;
-                background: #111;
-                color: #eee;
-                border-radius: 8px;
-                margin-top: 1rem;
+            .custom-iframe {{
+                height: calc(100% + {hide_top_px}px + 120px); /* hide_bottom khusus mobile */
             }}
         }}
 
-        /* ✅ Desktop */
+        /* Untuk tampilan desktop (lebih besar dari 768px) */
         @media (min-width: 769px) {{
-            .mobile-msg {{
-                display: none !important;
+            .custom-iframe {{
+                height: calc(100% + {hide_top_px}px + {hide_bottom_px}px);
             }}
         }}
     </style>
 
-    <div class="iframe-wrapper">
-        <iframe src="{src}"></iframe>
-    </div>
-    <div class="mobile-msg">
-        📱 Tampilan embed dinonaktifkan di perangkat seluler.<br>
-        Silakan buka di laptop/desktop 💻
-    </div>
+    <iframe class="custom-iframe" src="{src}"></iframe>
     """, height=height+100)
 
 # URL Ohara
 iframe_url = "https://ohara.ai/mini-apps/4e2fb7dc-1821-43bb-afdc-be3db1d12b74"
 
+# Panggil fungsi
+embed_iframe(iframe_url, hide_top_px=110, hide_bottom_px = 20, height=800)
