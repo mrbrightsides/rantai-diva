@@ -85,48 +85,60 @@ with st.sidebar:
     Versi UI: v1.0 • Streamlit • Theme Dark
     """)
 
-def embed_iframe(src, hide_top_px=0, hide_bottom_px=0, height=800):
+import streamlit.components.v1 as components
+
+def embed_iframe(src, height=800):
     components.html(f"""
     <style>
-        .custom-iframe {{
-            width: 100%;
-            height: calc(100% + {hide_top_px}px + {hide_bottom_px}px);
-            border: none;
-            overflow: hidden;
+        .iframe-wrapper {{
             position: relative;
-            top: -{hide_top_px}px;
+            width: 100%;
+            height: {height}px;
+            overflow: hidden;
         }}
 
-        /* ❌ Sembunyikan iframe jika layar <= 768px (tablet & HP) */
+        .iframe-wrapper iframe {{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }}
+
+        /* ❌ Sembunyikan di HP */
         @media (max-width: 768px) {{
-            .custom-iframe {{
-                display: none !important;
+            .iframe-wrapper {{
+                display: none;
             }}
-            .mobile-warning {{
+            .mobile-msg {{
                 display: block !important;
                 font-size: 1rem;
                 text-align: center;
                 padding: 1rem;
-                background: #f8f8f8;
+                background: #111;
+                color: #eee;
                 border-radius: 8px;
                 margin-top: 1rem;
             }}
         }}
 
-        /* ✅ Tampilkan iframe kalau desktop */
+        /* ✅ Desktop */
         @media (min-width: 769px) {{
-            .mobile-warning {{
+            .mobile-msg {{
                 display: none !important;
             }}
         }}
     </style>
 
-    <iframe class="custom-iframe" src="{src}"></iframe>
-    <div class="mobile-warning">
-        📱 Tampilan ini tidak tersedia di perangkat seluler.<br>
-        Silakan buka lewat laptop atau desktop untuk pengalaman penuh 💻
+    <div class="iframe-wrapper">
+        <iframe src="{src}"></iframe>
     </div>
-    """, height=height+hide_top_px+hide_bottom_px)
+    <div class="mobile-msg">
+        📱 Tampilan embed dinonaktifkan di perangkat seluler.<br>
+        Silakan buka di laptop/desktop 💻
+    </div>
+    """, height=height+100)
 
 # URL Ohara
 iframe_url = "https://ohara.ai/mini-apps/4e2fb7dc-1821-43bb-afdc-be3db1d12b74"
