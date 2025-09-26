@@ -85,7 +85,7 @@ with st.sidebar:
     Versi UI: v1.0 • Streamlit • Theme Dark
     """)
 
-def embed_iframe(src, hide_top_px=100, hide_bottom_px=0, height=800):
+def embed_iframe(src, hide_top_px=0, hide_bottom_px=0, height=800):
     components.html(f"""
     <style>
         .custom-iframe {{
