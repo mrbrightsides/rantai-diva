@@ -89,35 +89,11 @@ import streamlit.components.v1 as components
 
 def embed_iframe(src, hide_top_px=100, hide_bottom_px=0, height=800):
     components.html(f"""
-    <style>
+    <div style="height:{height}px; overflow:hidden; position:relative;">
         <iframe src="{src}" 
                 style="width:100%; height:calc(100% + {hide_top_px + hide_bottom_px}px); border:none; position:relative; top:-{hide_top_px}px;">
         </iframe>
-        .custom-iframe {{
-            width: 100%;
-            height: calc(100% + {hide_top_px}px + {hide_bottom_px}px);
-            border: none;
-            overflow: hidden;
-            position: relative;
-            top: -{hide_top_px}px;
-        }}
-
-        /* Untuk tampilan mobile (max 768px) */
-        @media (max-width: 768px) {{
-            .custom-iframe {{
-                height: calc(100% + {hide_top_px}px + 120px); /* hide_bottom khusus mobile */
-            }}
-        }}
-
-        /* Untuk tampilan desktop (lebih besar dari 768px) */
-        @media (min-width: 769px) {{
-            .custom-iframe {{
-                height: calc(100% + {hide_top_px}px + {hide_bottom_px}px);
-            }}
-        }}
-    </style>
-
-    <iframe class="custom-iframe" src="{src}"></iframe>
+    </div>
     """, height=height + hide_top_px + hide_bottom_px)
 
 # URL Ohara
