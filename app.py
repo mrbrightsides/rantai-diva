@@ -104,6 +104,8 @@ def embed_iframe(src, hide_top_px=100, hide_bottom_px=0, height=800):
                 border-radius: 12px;
                 font-size: 1.2em;
                 margin-top: 24px;
+                animation: fadeIn 0.6s ease-in-out;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.2);
             }}
         }}
         @media (min-width: 769px) {{
@@ -111,12 +113,21 @@ def embed_iframe(src, hide_top_px=100, hide_bottom_px=0, height=800):
                 display: none !important;
             }}
         }}
+        @keyframes fadeIn {{
+            from {{ opacity: 0; transform: translateY(12px); }}
+            to {{ opacity: 1; transform: translateY(0); }}
+        }}
     </style>
+
+    <!-- Desktop view -->
     <div class="hide-on-mobile" style="height:{height}px; overflow:hidden; position:relative;">
         <iframe src="{src}" 
-                style="width:100%; height:calc(100% + {hide_top_px + hide_bottom_px}px); border:none; position:relative; top:-{hide_top_px}px;">
+                style="width:100%; height:calc(100% + {hide_top_px + hide_bottom_px}px); 
+                       border:none; position:relative; top:-{hide_top_px}px;">
         </iframe>
     </div>
+
+    <!-- Mobile fallback -->
     <div class="show-on-mobile">
         📱 Tampilan ini tidak tersedia di perangkat seluler.<br>
         Silakan buka lewat laptop atau desktop untuk pengalaman penuh 💻
